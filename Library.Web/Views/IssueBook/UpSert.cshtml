@@ -1,0 +1,107 @@
+﻿@model IssueBookDTO
+
+<form method="post">
+    <input asp-for="IssuingBookId" hidden />
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-white text-center">@(Model.IssuingBookId == 0 ? "Create" : "Update") Issue Book</h1>
+        <hr />
+        <div class="row">
+
+
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="StudentId"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select class="form-select" asp-items="@Model.StudentList" asp-for="StudentId">
+                    <option disabled selected>--Please Select--</option>
+                </select>
+                <span class="text-danger" asp-validation-for="StudentId"></span>
+            </div>
+
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="BookId"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select class="form-select" asp-items="@Model.BookList" asp-for="BookId">
+                    <option disabled selected>--Please Select--</option>
+                </select>
+                <span class="text-danger" asp-validation-for="BookId"></span>
+            </div>
+            
+
+           
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="NoOfCopies"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="NoOfCopies" />
+                <span class="text-danger" asp-validation-for="NoOfCopies"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-4">
+                            <label class="control-label pt-2" style="font-size:20px;" asp-for="IssueDate"></label>
+                        </div>
+                        <div class="col-4 pt-2">
+                            <input type="text" class="form-control" id="IssueDate" asp-for="IssueDate" />
+                            <span class="text-danger" asp-validation-for="IssueDate"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-4">
+                            <label class="control-label pt-2" style="font-size:20px;" asp-for="ReturnDate"></label>
+                        </div>
+                        <div class="col-4 pt-2">
+                            <input type="text" class="form-control" id="ReturnDate" asp-for="ReturnDate" />
+                            <span class="text-danger" asp-validation-for="ReturnDate"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="col-5 offset-2 pt-3">
+                <a class="btn-primary btn form-control " asp-action="Index">Back to List</a>
+            </div>
+            <div class="col-5 pt-3">
+                <button type="submit" class="btn btn-success form-control">
+                    @(Model.BookId == 0 ? "Create" : "Update")
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <Partial name="_ValidationScriptsPartial" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#IssueDate').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 2000,
+                maxYear: parseInt(moment().format('YYYY'), 10),
+                maxDate: moment()
+            });
+
+            $('#ReturnDate').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: parseInt(moment().format('YYYY'), 10)
+
+            });
+        });
+    </script>
+}
+

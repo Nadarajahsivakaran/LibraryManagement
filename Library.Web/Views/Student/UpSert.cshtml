@@ -1,0 +1,118 @@
+﻿@model Student
+
+<form  method="post">
+    <input asp-for="StudentId" hidden/>
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-white text-center">@(Model.StudentId==0 ? "Register" : "Update")  Student</h1>
+        <hr />
+        <div class="row">
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="IdNumber"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="IdNumber" />
+                <span class="text-danger" asp-validation-for="IdNumber"></span>
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="FirstName"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="FirstName" />
+                <span class="text-danger" asp-validation-for="FirstName"></span>
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="LastName"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="LastName" />
+                <span class="text-danger" asp-validation-for="LastName"></span>
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="Email"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="Email" />
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="Address"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="Address" />
+                <span class="text-danger" asp-validation-for="Address"></span>
+            </div>
+
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="PhoneNumber"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="PhoneNumber" />
+                <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-4">
+                            <label class="control-label pt-2" style="font-size:20px;" asp-for="RegisteredDate"></label>
+                        </div>
+                        <div class="col-4 pt-2">
+                            <input type="text" class="form-control" id="RegisteredDate" asp-for="RegisteredDate" />
+                            <span class="text-danger" asp-validation-for="RegisteredDate"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-4">
+                            <label class="control-label pt-2" style="font-size:20px;" asp-for="TerminatedDate"></label>
+                        </div>
+                        <div class="col-4 pt-2">
+                            <input type="text" class="form-control" id="TerminatedDate" asp-for="TerminatedDate" />
+                            <span class="text-danger" asp-validation-for="TerminatedDate"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-5 offset-2 pt-3">
+                <a class="btn-primary btn form-control " asp-action="Index">Back to List</a>
+            </div>
+            <div class="col-5 pt-3">
+                <button type="submit"  class="btn btn-success form-control" >
+                    @(Model.StudentId == 0 ? "Register" : "Update")
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <Partial name="_ValidationScriptsPartial" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#RegisteredDate').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 2000,
+                maxYear: parseInt(moment().format('YYYY'), 10),
+                maxDate: moment()
+            });
+
+            $('#TerminatedDate').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: parseInt(moment().format('YYYY'), 10)
+                
+            });
+        });
+    </script>
+}
+

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Student>
+
+<div class="card shadow border-0 mt-4">
+	<div class="card-header bg-secondary bg-gradient ml-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h1 class="text-white">Students List</h1>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4">
+		<div class="row pb-3">
+			<div class="col-6">
+			</div>
+			<div class="col-6 text-end">
+				<a class="btn btn-outline-primary" asp-action="UpSert"><i class="bi bi-plus-square"></i> Register Student</a>
+
+			</div>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID Number</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Telephone</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.IdNumber</td>
+						<td>@item.FirstName</td>
+						<td>@item.LastName</td>
+						<td>@item.Email</td>
+						<td>@item.PhoneNumber</td>
+						
+						<td>
+							<a class="btn btn-info" title="View" asp-action="StudentView" asp-route-studentId="@item.StudentId">
+								<i class="bi bi-pencil"></i>
+							</a>
+							<a class="btn btn-success" title="Edit" asp-action="UpSert" asp-route-studentId="@item.StudentId">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+							<a class="btn btn-danger" title="Delete" asp-action="DeleteView" asp-route-studentId="@item.StudentId">
+								<i class="bi bi-trash"></i>
+							</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+	</div>
+
+</div>

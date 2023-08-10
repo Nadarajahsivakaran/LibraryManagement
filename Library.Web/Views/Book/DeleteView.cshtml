@@ -1,0 +1,90 @@
+﻿@model Book
+
+<form action="DeleteView" method="post">
+    <input asp-for="BookId" hidden/>
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-white text-center">Book Detail</h1>
+        <hr />
+        <div class="row">
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="BookReference"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="BookReference" disabled />
+
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="ISBN"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="ISBN" disabled />
+
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="Title"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="Title" disabled />
+                <span class="text-danger" asp-validation-for="Title"></span>
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="Author"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="Author" disabled />
+                <span class="text-danger" asp-validation-for="Author"></span>
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="Publication"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="Publication" disabled />
+                <span class="text-danger" asp-validation-for="Publication"></span>
+            </div>
+
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="Edition"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="Edition" disabled />
+                <span class="text-danger" asp-validation-for="Edition"></span>
+            </div>
+
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="PublishedYear"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="PublishedYear" disabled />
+                <span class="text-danger" asp-validation-for="PublishedYear"></span>
+            </div>
+
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="NoOfCopies"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="NoOfCopies" disabled />
+                <span class="text-danger" asp-validation-for="NoOfCopies"></span>
+            </div>
+
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;" asp-for="Category"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" asp-for="Category" disabled />
+            </div>
+
+            <div class="col-5 offset-2 pt-3">
+                <a class="btn-primary btn form-control " asp-action="Index">Back to List</a>
+            </div>
+            <div class="col-5 pt-3">
+                <button type="submit" class="btn btn-danger form-control">
+                   Delete
+                </button>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+

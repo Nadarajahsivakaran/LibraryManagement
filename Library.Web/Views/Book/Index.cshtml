@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Book>
+
+<div class="card shadow border-0 mt-4">
+	<div class="card-header bg-secondary bg-gradient ml-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h1 class="text-white">Book List</h1>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4">
+		<div class="row pb-3">
+			<div class="col-6">
+			</div>
+			<div class="col-6 text-end">
+				<a class="btn btn-outline-primary" asp-action="UpSert"><i class="bi bi-plus-square"></i>Create Book</a>
+
+			</div>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Book Reference</th>
+					<th>ISBN</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Publication</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.BookReference</td>
+						<td>@item.ISBN</td>
+						<td>@item.Title</td>
+						<td>@item.Author</td>
+						<td>@item.Publication</td>
+
+						<td>
+							<a class="btn btn-info" title="View" asp-action="BookView" asp-route-bookId="@item.BookId">
+								<i class="bi bi-pencil"></i>
+							</a>
+							<a class="btn btn-success" title="Edit" asp-action="UpSert" asp-route-bookId="@item.BookId">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+							<a class="btn btn-danger" title="Delete" asp-action="DeleteView" asp-route-bookId="@item.BookId">
+								<i class="bi bi-trash"></i>
+							</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+	</div>
+
+</div>

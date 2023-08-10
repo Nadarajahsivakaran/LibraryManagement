@@ -1,0 +1,59 @@
+﻿@model IEnumerable<IssuingBooks>
+
+<div class="card shadow border-0 mt-4">
+	<div class="card-header bg-secondary bg-gradient ml-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h1 class="text-white">Issue Book List</h1>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4">
+		<div class="row pb-3">
+			<div class="col-6">
+			</div>
+			<div class="col-6 text-end">
+				<a class="btn btn-outline-primary" asp-action="UpSert"><i class="bi bi-plus-square"></i>Create Issue Book</a>
+
+			</div>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Book</th>
+					<th>Student</th>
+					<th>Issue Date</th>
+					<th>Return Date</th>
+					<th>No Of Copies</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.Book.Title</td>
+						<td>@item.Student.FirstName</td>
+						<td>@item.IssueDate.ToString("yyyy-MM-dd")</td>
+						<td>@item.ReturnDate.ToString("yyyy-MM-dd")</td>
+						<td>@item.NoOfCopies</td>
+
+						<td>
+							<a class="btn btn-info" title="View" asp-action="IssueBookView" asp-route-IssuingBookId="@item.IssuingBookId">
+								<i class="bi bi-pencil"></i>
+							</a>
+							<a class="btn btn-success" title="Edit" asp-action="UpSert" asp-route-IssuingBookId="@item.IssuingBookId">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+							<a class="btn btn-danger" title="Delete" asp-action="DeleteView" asp-route-IssuingBookId="@item.IssuingBookId">
+								<i class="bi bi-trash"></i>
+							</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+	</div>
+
+</div>
